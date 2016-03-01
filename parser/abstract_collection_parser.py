@@ -1,6 +1,6 @@
 import abstract_parser
 
-class AbstractCollectionParser:
+class AbstractCollectionParser(AbstractParser):
     parsers = []
 
     def add(self, parser):

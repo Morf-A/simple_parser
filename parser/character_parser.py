@@ -1,4 +1,4 @@
-import abstractparser
+import abstract_parser
 class CharacterParser(AbstractParser):
 
     char = None
