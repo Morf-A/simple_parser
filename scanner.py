@@ -1,5 +1,6 @@
 import re
 import context
+import copy
 
 class Scanner(object):
     WORD       = 1
@@ -11,22 +12,20 @@ class Scanner(object):
     EOF        = 10
     SOF        = 11
 
-    lineNo    = 1
-    charNo    = 0
-    token     = None
-    tokenType = None
-    reader    = None
-    context   = None
+
 
     def __init__(self, reader, context):
         self.reader  = reader
         self.context = context
-        tokenType    = self.SOF
+        self.lineNo    = 1
+        self.charNo    = 0
+        self.token     = None
+        self.tokenType = Scanner.SOF
 
     def skipWhiteSpaceTokens(self):
         ret = 0
-        while self.tokenType != self.WHITESPACE or self.tokenType != self.EOL:
-            self.newxtToken()
+        while self.tokenType == self.WHITESPACE or self.tokenType == self.EOL:
+            self.nextToken()
             ret += 1
         return ret
 
@@ -95,21 +94,21 @@ class Scanner(object):
 
     def getState(self):
         state = {}
-        state.lineNo    = self.lineNo
-        state.charNo    = self.charNo
-        state.token     = self.token
-        state.tokenType = self.tokenType
-        state.reader    = copy.deepcopy(self.reader)
-        state.context   = cope.deepcopy(self.context)
+        state['lineNo']     = self.lineNo
+        state['charNo']    = self.charNo
+        state['token']     = self.token
+        state['tokenType'] = self.tokenType
+        state['reader']    = copy.deepcopy(self.reader)
+        state['context']   = copy.deepcopy(self.context)
         return state
 
     def setState(self, state):
-        self.lineNo    = state.lineNo
-        self.charNo    = state.charNo
-        self.token     = state.token
-        self.tokenType = state.tokenType
-        self.reader    = state.reader
-        self.context   = state.context
+        self.lineNo    = state['lineNo']
+        self.charNo    = state['charNo']
+        self.token     = state['token']
+        self.tokenType = state['tokenType']
+        self.reader    = state['reader']
+        self.context   = state['context']
 
     def eatSpaceChars(self, char):
         val = ''
@@ -139,13 +138,25 @@ class Scanner(object):
         return res
 
     def isWordChar(self, char):
-        return re.search("[A-Za-z0-9_\-]", char) is not None
+        if char == False:
+            result = False
+        else:
+            result = re.search("[A-Za-z0-9_\-]", char) is not None
+        return result
 
     def isSpaceChar(self, char):
-        return re.search("\t| ", char) is not None
+        if char == False:
+            result = False
+        else:
+            result = re.search("\t| ", char) is not None
+        return result
 
     def isEolChar(self, char):
-        return re.search("\n|\r", char) is not None
+        if char == False:
+            result = False
+        else:
+            result = re.search("\n|\r", char) is not None
+        return result
 
 
     def isQuoteChar(self, char):

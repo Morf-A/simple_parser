@@ -1,4 +1,4 @@
-import abstract_parser
+from abstract_parser import AbstractParser
 
 class AbstractCollectionParser(AbstractParser):
     parsers = []

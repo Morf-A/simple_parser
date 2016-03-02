@@ -1,4 +1,4 @@
-import abstract_collection_parser
+from abstract_collection_parser import AbstractCollectionParser
 
 class SequenceParser(AbstractCollectionParser):
 
@@ -6,7 +6,7 @@ class SequenceParser(AbstractCollectionParser):
         startState = scanner.getState()
         result = True
         for parser in self.parsers:
-            if parser.scan(scanner):
+            if not parser.scan(scanner):
                 scanner.setState(startState)
                 result = False
                 break
