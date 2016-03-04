@@ -3,8 +3,8 @@ class CharacterParser(AbstractParser):
 
     char = None
 
-    def __init__(self, char, name=None, respectSpace=False):
-        super(CharacterParser, self).__init__(name, respectSpace)
+    def __init__(self, char):
+        super(CharacterParser, self).__init__()
         self.char = char
 
     def doScan(self, scanner):
