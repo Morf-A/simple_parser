@@ -26,11 +26,12 @@ class RepetitionParser(AbstractCollectionParser):
         scanResult = True
         if len(self.parsers) > 0:
             parser = self.parsers[0]
-            while (counter < self.maximum) or scanResult:
+            while counter < self.maximum and scanResult:
                 scanResult = parser.scan(scanner)
                 counter += 1
             if not scanResult:
-                scanner.setState(startState)
+                counter -= 1
             if counter < self.minimum:
+                scanner.setState(startState)
                 result = False
         return result

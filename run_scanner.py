@@ -1,10 +1,9 @@
 from scanner import Scanner
-from context import Context
 from stringreader import Stringreader
 
-context = Context()
-reader  = Stringreader("$input equals \"4\" or $input equals 'four'")
-#reader  = stringreader("$")
+#reader  = Stringreader("$input equals \"4\" or $input equals 'four'")
+context = []
+reader  = Stringreader("!")
 scanner = Scanner(reader, context)
 
 print "token\tcharNo\tsrtingType"

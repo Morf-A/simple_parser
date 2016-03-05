@@ -1,6 +1,6 @@
 import re
-import context
 import copy
+import sys
 
 class Scanner(object):
     WORD       = 1
@@ -11,8 +11,6 @@ class Scanner(object):
     CHAR       = 9
     EOF        = 10
     SOF        = 11
-
-
 
     def __init__(self, reader, context):
         self.reader  = reader

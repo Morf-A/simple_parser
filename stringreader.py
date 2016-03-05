@@ -1,13 +1,9 @@
 class Stringreader(object):
-    __in  = None
-    __pos = None
-    __len = None
 
     def __init__(self, string):
         self.__in  = string
         self.__pos = 0
         self.__len = len(string)
-
 
     def getChar(self):
         char = False

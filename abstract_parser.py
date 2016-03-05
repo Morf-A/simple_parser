@@ -43,10 +43,11 @@ class AbstractParser(object):
 
         if scanResult and self.term():
             self.next(scanner)
-        print 'token:'+str(scanner.getToken())
-        print 'self.term(): '+str(self.term())
-        print 'scanResult: '+str(scanResult)
-        print ""
+        # print 'token:'+str(scanner.getToken())
+        # print 'self.term(): '+str(self.term())
+        # print 'scanResult: '+str(scanResult)
+        # print 'getTypeString: '+str(scanner.getTypeString())
+        # print ""
         return scanResult
 
 
