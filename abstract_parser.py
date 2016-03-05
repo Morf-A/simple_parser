@@ -35,15 +35,11 @@ class AbstractParser(object):
     def scan(self, scanner):
         if scanner.getTokenType() == scanner.SOF:
             scanner.nextToken()
-
         scanResult = self.doScan(scanner)
-
         if scanResult and self.__handler is not None:
             self.__handler.handle(scanResult)
-
         if scanResult and self.term() and not self.__discard:
             self.push(scanner)
-
         if scanResult and self.term():
             self.next(scanner)
         return scanResult
