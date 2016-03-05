@@ -23,6 +23,9 @@ class AbstractParser(object):
     def setDiscard(self, discard):
         self.__discard = discard
 
+    def getDiscard(self):
+        return self.__discard
+
     def setHandler(self, handler):
         self.__handler = haldler
 
@@ -43,11 +46,6 @@ class AbstractParser(object):
 
         if scanResult and self.term():
             self.next(scanner)
-        # print 'token:'+str(scanner.getToken())
-        # print 'self.term(): '+str(self.term())
-        # print 'scanResult: '+str(scanResult)
-        # print 'getTypeString: '+str(scanner.getTypeString())
-        # print ""
         return scanResult
 
 

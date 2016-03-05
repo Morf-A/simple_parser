@@ -3,29 +3,21 @@ from sequence_parser import SequenceParser
 from scanner import Scanner
 from stringreader import Stringreader
 from repetition_parser import RepetitionParser
+from alternative_parser import AltetnativeParser
+from word_parser import WordParser
+from literal_parser import LiteralParser
 
-# a = CharacterParser('&')
-# b = CharacterParser('*')
-# sec = SequenceParser()
-# sec.add(a)
-# sec.add(b)
-# repeat = RepetitionParser(2, 4)
-# repeat.add(sec)
-# v    = CharacterParser('!')
-# sec2 = SequenceParser();
-# sec2.add(repeat)
-# sec2.add(v)
+s  = CharacterParser('$')
+eq = CharacterParser('=')
+s.setDiscard(True)
+word = WordParser()
+literal = LiteralParser()
 
-e = CharacterParser('&')
-v = CharacterParser('!')
-rep = RepetitionParser(2, 4)
-rep.add(v)
 sec = SequenceParser()
-sec.add(rep, e)
-
+sec.add(s, word, eq, literal)
 
 context = []
-reader  = Stringreader("!&")
+reader  = Stringreader("$string = 'Mama mila ramu'")
 scanner = Scanner(reader, context)
 scanResult = sec.scan(scanner)
 

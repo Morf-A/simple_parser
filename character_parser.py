@@ -1,7 +1,6 @@
 from abstract_parser import AbstractParser
-class CharacterParser(AbstractParser):
 
-    char = None
+class CharacterParser(AbstractParser):
 
     def __init__(self, char):
         super(CharacterParser, self).__init__()
