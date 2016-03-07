@@ -7,7 +7,6 @@ class WordParser(AbstractParser):
         self.word = word
 
     def doScan(self, scanner):
-
         return scanner.getTokenType() == scanner.WORD and\
             (self.word is None or self.word == scanner.getToken())
 

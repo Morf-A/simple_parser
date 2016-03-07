@@ -1,9 +1,12 @@
+import sys
+sys.path.append("parser")
+
 from character_parser import CharacterParser
 from sequence_parser import SequenceParser
 from scanner import Scanner
 from stringreader import Stringreader
 from repetition_parser import RepetitionParser
-from alternative_parser import AltetnativeParser
+from alternative_parser import AlternativeParser
 from word_parser import WordParser
 from literal_parser import LiteralParser
 

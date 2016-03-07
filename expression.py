@@ -1,4 +1,3 @@
-
 class Expression:
     value    = None
 
@@ -55,20 +54,3 @@ class BooleanAndExpression(OperatorExpression):
 class BooleanEqualsExpression(OperatorExpression):
     def doInterpret(self, l_value, r_value):
         return l_value == r_value
-
-
-inp = VariableExpression('input')
-statement = BooleanOrExpression(
-    BooleanEqualsExpression(inp, LiteralExpression('four')),
-    BooleanEqualsExpression(inp, LiteralExpression(4))
-)
-
-
-for value in [4, 'four', 52]:
-    inp.setValue(value)
-    statement.interpret()
-    print str(value) + ':'
-    if statement.getValue():
-        print 'yes'
-    else:
-        print 'no'

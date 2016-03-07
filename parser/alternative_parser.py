@@ -1,6 +1,6 @@
 from abstract_collection_parser import AbstractCollectionParser
 
-class AltetnativeParser(AbstractCollectionParser):
+class AlternativeParser(AbstractCollectionParser):
 
     def doScan(self, scanner):
         result = False
